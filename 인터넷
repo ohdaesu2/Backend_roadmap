@@ -17,7 +17,7 @@ HTTP(Hyper Text Transfer Protocol)
 Request HTTP 구성: method(첫 줄)/ header(두 번째 줄)/ 본문 (세 번째 줄)
 ~~~
 GET https://velog.io/@surim014 HTTP/1.1					 // 시작줄
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...               // 헤더
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) ...          // 헤더
 Upgrade-Insecure-Requests: 1
 ~~~
 1. method
