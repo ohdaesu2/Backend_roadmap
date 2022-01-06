@@ -2,7 +2,7 @@ OS및 일반적인 지식2
 ===============
 
 ### 메모리 관리
-![](../../../../var/folders/2t/19jmqkvn5c9dpyjys7t98n9r0000gn/T/TemporaryItems/NSIRD_screencaptureui_sD2ED8/스크린샷 2022-01-06 오후 2.06.16.png)
+<img width="787" alt="스크린샷 2022-01-06 오후 7 16 23" src="https://user-images.githubusercontent.com/90598930/148367423-638b66e1-979b-45cf-9f27-0bb08a9b72b6.png">
 프로세스가 되기 위해서는 메모리에 프로그램이 적재되어야 실행이 가능하다.  
 따라서 메모리는 중요한 작업 공간이고, 한정된 메모리에 여러 프로세스가 함께 사용하므로 효율적인 관리가 필요하다
 - 적재 청책(Fetch Policy): 디스크에서 메모리로 프로세스를 언제 가져와야 할지를 정하는 것
@@ -13,7 +13,7 @@ OS및 일반적인 지식2
 - 논리적 주소(=가상 주소): 코드가 저장된 공간과 프로그램에서 사용하는 자료구조 
 - 물리적 주소: 적재하는 실제주소. 메모리 칩이나 디스크 공간
 - 메모리 관리 장치(MMU): 논리적 주소-> 물리적 주소 변환을 담당. 즉, 바인딩을 담당 
-![](../../../../var/folders/2t/19jmqkvn5c9dpyjys7t98n9r0000gn/T/TemporaryItems/NSIRD_screencaptureui_lSkU0L/스크린샷 2022-01-06 오후 2.08.18.png)
+<img width="800" alt="스크린샷 2022-01-06 오후 7 15 15" src="https://user-images.githubusercontent.com/90598930/148367293-fcedbe9f-8b35-4469-8edd-62c22893c9a7.png">
 
 바인딩(Binding)
 - 논리적 주소 -> 물리적 주소를 매핑시켜주는 직업
