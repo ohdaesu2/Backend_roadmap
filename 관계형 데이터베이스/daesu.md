@@ -107,8 +107,9 @@ PostgreSQL 구조
 - 다양한 에디션이 있는데, 어느 사용시점부터는 비용이 비싸다.
 
 ### Oracle
-<img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871554-0e1f2a26-98ef-482f-b1d7-381d444a2627.png)
+<img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871554-0e1f2a26-98ef-482f-b1d7-381d444a2627.png
 ">
+
 - Oracle사에서 만든 RDBMS로, 가장 많이 사용되는 RDBMS중 하나 
 - Unix, Linux, Windows 등 다양한 OS에서도 지원
 - Oracle Real Application Clusters (RAC)의 기능으로 데이터베이스 관리에 있어서 자원의 확장성과 장애에 대한 대처가 유연해 하다는 장점
