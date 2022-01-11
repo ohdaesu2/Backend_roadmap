@@ -12,7 +12,7 @@
 
 테이블(=릴레이션)
 - 테이블은 튜플들의 집합이므로 순서가 존재하지 않는다.
-- ![](../../Desktop/스크린샷/스크린샷 2021-12-20 오후 5.32.09.png) 사진따로 넣기.
+<img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871208-72f9faa9-a94b-4142-867d-ad2edf908ed8.png">
 
 키(Key)
 - 튜플을 유일하게 식별할 수 있는 식별자
@@ -71,7 +71,6 @@ DBMS
 
 ### PostgreSQL
 ![](../../../../var/folders/2t/19jmqkvn5c9dpyjys7t98n9r0000gn/T/TemporaryItems/NSIRD_screencaptureui_YJcZdO/스크린샷 2022-01-10 오후 12.15.10.png)
-PostgreSQL 이란?
 - PostgreSQL은 오픈 소스 객체지향 데이터베이스 시스템(ORDBMS)으로, Enterprise급 DBMS의 기능과 차세대 DBMS에서나 볼 수 있을 법한 기능들을 제공한다.
 - 오랜 역사를 갖는 PostgreSQL은 다른 관계형 데이터베이스 시스템과 달리 연산자, 복합 자료형, 집계 함수, 자료형 변환자, 확장 기능 등 다양한 데이터베이스 객체를 사용자가 임의로 만들 수 있는 기능을 제공함으로써, 
 - 마치 새로운 하나의 프로그래밍 언어처럼 무한한 기능을 손쉽게 구현할 수 있다.
@@ -83,6 +82,7 @@ PostgreSQL 구조
 - 그리고 클라이언트는 기존 서버와의 간섭 없이 새로 생성된 서버 프로세스와 통신하게 된다.
 
 ### MySQL
+![mysql](https://user-images.githubusercontent.com/90598930/148871466-a359ec89-8db7-475c-a0f4-00c87d39f15c.png)
 - 선 마이크로시스템즈에서 만든 오픈소스 RDBMS (현재는 Oracle사에 합병)
 - Unix, Linux, Windows 등 다양한 OS에서도 지원
 - MySQL은 오픈 소스로 무료로 사용 가능하며, 다중 사용자와 다중 스레드를 지원한다, 
@@ -93,18 +93,21 @@ PostgreSQL 구조
 - MySQL 응용 프로그램을 사용자의 용도에 맞게 수정할 수 있다.
 
 ### Maria DB
+![mariadb](https://user-images.githubusercontent.com/90598930/148871485-ae9b2b7c-e631-4b46-8039-b4fa1dc69558.png)
 - Maria DB 재단에서 만든 오픈소스 RDBMS(관계형 데이터베이스)
 - MySQL을 개발했던 핵심 개발사들이 오라클사(MySQL을 만든 사람들이 소속되어 있는 회사)를 나와 만든 것
 - MySQL을 기반으로 만들어졌기 때문에, 호환성이 거의 100프로 이다.
 - MySQL의 상위호환 이라고 말할 수 있다. 
 
 ### MS SQL
+![mssql](https://user-images.githubusercontent.com/90598930/148871516-675963be-8857-4d19-a060-2824feecc658.png)
 - 마이크로소프트사에서 만든 RDBMS
 - MS 제품이기 때문에 Window server에서만 구동되며, C#과는 높은호환성을 가지고 있다. 
 - 사용자 편의성이 뛰어나고 DB 관리툴이 편리하다는 장점이 있다.
 - 다양한 에디션이 있는데, 어느 사용시점부터는 비용이 비싸다.
 
 ### Oracle
+![Oracle-Logo](https://user-images.githubusercontent.com/90598930/148871554-0e1f2a26-98ef-482f-b1d7-381d444a2627.png)
 - Oracle사에서 만든 RDBMS로, 가장 많이 사용되는 RDBMS중 하나 
 - Unix, Linux, Windows 등 다양한 OS에서도 지원
 - Oracle Real Application Clusters (RAC)의 기능으로 데이터베이스 관리에 있어서 자원의 확장성과 장애에 대한 대처가 유연해 하다는 장점
