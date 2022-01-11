@@ -70,7 +70,7 @@ DBMS
 - MSSQL은 위 RDBMS의 중간정도로, 중소기업의 회사 업무용 DB로 사용된다.
 
 ### PostgreSQL
-![](../../../../var/folders/2t/19jmqkvn5c9dpyjys7t98n9r0000gn/T/TemporaryItems/NSIRD_screencaptureui_YJcZdO/스크린샷 2022-01-10 오후 12.15.10.png)
+<img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148925305-1d6a3938-d5a5-4059-9c39-8069a7bd700b.jpeg">
 - PostgreSQL은 오픈 소스 객체지향 데이터베이스 시스템(ORDBMS)으로, Enterprise급 DBMS의 기능과 차세대 DBMS에서나 볼 수 있을 법한 기능들을 제공한다.
 - 오랜 역사를 갖는 PostgreSQL은 다른 관계형 데이터베이스 시스템과 달리 연산자, 복합 자료형, 집계 함수, 자료형 변환자, 확장 기능 등 다양한 데이터베이스 객체를 사용자가 임의로 만들 수 있는 기능을 제공함으로써, 
 - 마치 새로운 하나의 프로그래밍 언어처럼 무한한 기능을 손쉽게 구현할 수 있다.
