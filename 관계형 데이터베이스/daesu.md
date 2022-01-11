@@ -40,8 +40,6 @@
      - 의미적으로 허용되지 않는 값이 존재해서는 안된다.
   6) 참조 무결성 제약조건
      - 왜래키의 속성은 기본키의 속성과 동일한 도메인을 가진다.
-       SQL(Structured Query Language)
-       SQL(Structured Query Language)은 데이터베이스에서 데이터를 정의, 조작, 제어하기 위해 사용하는 언어입니다.
 
 SQL(Structured Query Language)
 - SQL은 데이터베이스에서 데이터를 정의, 조작, 제어하기 위해 사용하는 언어
