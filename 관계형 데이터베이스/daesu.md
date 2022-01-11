@@ -62,22 +62,24 @@ DBMS
 - 객체지향 데이터베이스시스템(ODBMS)
 
 다양한 RDBMS
-- PostegreSQL, MySQL, MariaDB, MSSQL, Oracle
+- PostgreSQL, MySQL, MariaDB, MSSQL, Oracle
 - Oracle의 경우, 은행원 등 커다란 빅 사이트에 주로 사용된다.
 - MySQL의 경우, 개인용이나, 웹서버 DB로 주로 사용된다. 
 - MSSQL은 위 RDBMS의 중간정도로, 중소기업의 회사 업무용 DB로 사용된다.
 
 ### PostgreSQL
 <img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148925305-1d6a3938-d5a5-4059-9c39-8069a7bd700b.jpeg">
-- PostgreSQL은 오픈 소스 객체지향 데이터베이스 시스템(ORDBMS)으로, Enterprise급 DBMS의 기능과 차세대 DBMS에서나 볼 수 있을 법한 기능들을 제공한다.
+- PostgreSQL은 오픈 소스 객체-관계형 데이터베이스 시스템(ORDBMS)으로, Enterprise급 DBMS의 기능과 차세대 DBMS에서나 볼 수 있을 법한 기능들을 제공한다.
 - 오랜 역사를 갖는 PostgreSQL은 다른 관계형 데이터베이스 시스템과 달리 연산자, 복합 자료형, 집계 함수, 자료형 변환자, 확장 기능 등 다양한 데이터베이스 객체를 사용자가 임의로 만들 수 있는 기능을 제공함으로써, 
 - 마치 새로운 하나의 프로그래밍 언어처럼 무한한 기능을 손쉽게 구현할 수 있다.
-
-PostgreSQL 구조
-- PostgreSQL은 클라이언트/서버 모델을 사용한다. 
-- 서버는 데이터베이스 파일들을 관리하며, 클라이언트 애플리케이션으로부터 들어오는 연결을 수용하고, 클라이언트를 대신하여 데이터베이스 액션을 수행한다. 
-- 서버는 다중 클라이언트 연결을 처리할 수 있는데, 서버는 클라이언트의 연결 요청이 오면 각 커넥션에 대해 새로운 프로세스를 fork한다. 
-- 그리고 클라이언트는 기존 서버와의 간섭 없이 새로 생성된 서버 프로세스와 통신하게 된다.
+- ACID(Atomicity, Consistency, Isolation, Durability) 및 트랜잭션 지원
+- 다양한 인덱싱 기법 지원
+- 유연한 Full-text search 기능
+> 트랜잭션: 하나의 작업을 수행하기 위해 필요한 데이터베이스의 연산들을 모아놓은 것으로, 데이터베이스에서 논리적인 작업의 단위이며 장애가 발생했을 때 데이터를 복구하는 작업의 단위 
+> Atomicity(원자성): 모두 정상적으로 작동하거나 또는 아예 실행되지 않아야 한다. 
+> Consistency(일관성): 트랜잭션이 수행한 이후에도 데이터베이스의 일관성을 유지해야 한다. 
+> Isolation(격리성): 현재 수행중인 트랜잭션이 완료될 때까지 트랜잭션이 생성한 중간 연산 결과에 다른 트랜잭션이 접근할 수 없음을 의미  
+> Durability(지속성): 트랜잭션이 성공적으로 끝난 후, 데이터베이스에 반영된 결과에 대해서는 어떠한 경우에도 손실되면 안된다. 
 
 ### MySQL
 <img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871466-a359ec89-8db7-475c-a0f4-00c87d39f15c.png">
