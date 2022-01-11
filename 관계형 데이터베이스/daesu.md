@@ -82,7 +82,7 @@ PostgreSQL 구조
 - 그리고 클라이언트는 기존 서버와의 간섭 없이 새로 생성된 서버 프로세스와 통신하게 된다.
 
 ### MySQL
-![mysql](https://user-images.githubusercontent.com/90598930/148871466-a359ec89-8db7-475c-a0f4-00c87d39f15c.png)
+<img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871466-a359ec89-8db7-475c-a0f4-00c87d39f15c.png">
 - 선 마이크로시스템즈에서 만든 오픈소스 RDBMS (현재는 Oracle사에 합병)
 - Unix, Linux, Windows 등 다양한 OS에서도 지원
 - MySQL은 오픈 소스로 무료로 사용 가능하며, 다중 사용자와 다중 스레드를 지원한다, 
