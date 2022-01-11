@@ -11,10 +11,10 @@ OS및 일반적인 지식2
 - 대치 정책(Replacement Policy): 메모리가 충분하지 않을 때 현재 메모리에 적재된 프로세스 중 제거할 프로세스를 결정하는 방법
 
 메모리 주소
-- 논리적 주소(=가상 주소): 코드가 저장된 공간과 프로그램에서 사용하는 자료구조 
+- 논리적 주소(=가상 주소): 주소 프로그램이 실행되는 동안 CPU에 의해 생성 된 것
 - 물리적 주소: 적재하는 실제주소. 메모리 칩이나 디스크 공간
 - 메모리 관리 장치(MMU): 논리적 주소-> 물리적 주소 변환을 담당. 즉, 바인딩을 담당 
-<img width="800" alt="스크린샷 2022-01-06 오후 7 15 15" src="https://user-images.githubusercontent.com/90598930/148367293-fcedbe9f-8b35-4469-8edd-62c22893c9a7.png">
+<img width="600" alt="스크린샷 2022-01-06 오후 7 15 15" src="https://user-images.githubusercontent.com/90598930/148367293-fcedbe9f-8b35-4469-8edd-62c22893c9a7.png">
 
 바인딩(Binding)
 - 논리적 주소 -> 물리적 주소를 매핑시켜주는 직업
@@ -79,7 +79,7 @@ POSIX(Portable Operation System Interface)
 - 표준 프린터 출력(stdprn)
   - 일반적으로 프린터 문자열을 출력한다. 
 
-<img width="857" alt="스크린샷 2022-01-06 오후 7 46 19" src="https://user-images.githubusercontent.com/90598930/148371097-b379aede-5e00-465c-a012-2d3844516f68.png">
+<img width="600" alt="스크린샷 2022-01-06 오후 7 46 19" src="https://user-images.githubusercontent.com/90598930/148371097-b379aede-5e00-465c-a012-2d3844516f68.png">
 
 ### 기본적인 네트워크 개념
 네트워크란
