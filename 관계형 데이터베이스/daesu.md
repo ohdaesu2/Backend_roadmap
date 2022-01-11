@@ -69,6 +69,7 @@ DBMS
 
 ### PostgreSQL
 <img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148925305-1d6a3938-d5a5-4059-9c39-8069a7bd700b.jpeg">
+
 - PostgreSQL은 오픈 소스 객체-관계형 데이터베이스 시스템(ORDBMS)으로, Enterprise급 DBMS의 기능과 차세대 DBMS에서나 볼 수 있을 법한 기능들을 제공한다.
 - 오랜 역사를 갖는 PostgreSQL은 다른 관계형 데이터베이스 시스템과 달리 연산자, 복합 자료형, 집계 함수, 자료형 변환자, 확장 기능 등 다양한 데이터베이스 객체를 사용자가 임의로 만들 수 있는 기능을 제공함으로써, 
 - 마치 새로운 하나의 프로그래밍 언어처럼 무한한 기능을 손쉽게 구현할 수 있다.
@@ -84,6 +85,7 @@ DBMS
 
 ### MySQL
 <img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871466-a359ec89-8db7-475c-a0f4-00c87d39f15c.png">
+
 - 선 마이크로시스템즈에서 만든 오픈소스 RDBMS (현재는 Oracle사에 합병)
 - Unix, Linux, Windows 등 다양한 OS에서도 지원
 - MySQL은 오픈 소스로 무료로 사용 가능하며, 다중 사용자와 다중 스레드를 지원한다, 
@@ -95,6 +97,7 @@ DBMS
 
 ### Maria DB
 <img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871485-ae9b2b7c-e631-4b46-8039-b4fa1dc69558.png">
+
 - Maria DB 재단에서 만든 오픈소스 RDBMS(관계형 데이터베이스)
 - MySQL을 개발했던 핵심 개발사들이 오라클사(MySQL을 만든 사람들이 소속되어 있는 회사)를 나와 만든 것
 - MySQL을 기반으로 만들어졌기 때문에, 호환성이 거의 100프로 이다.
@@ -102,6 +105,7 @@ DBMS
 
 ### MS SQL
 <img width="624" alt="스크린샷 2021-12-20 오후 5 32 09" src="https://user-images.githubusercontent.com/90598930/148871516-675963be-8857-4d19-a060-2824feecc658.png">
+
 - 마이크로소프트사에서 만든 RDBMS
 - MS 제품이기 때문에 Window server에서만 구동되며, C#과는 높은호환성을 가지고 있다. 
 - 사용자 편의성이 뛰어나고 DB 관리툴이 편리하다는 장점이 있다.
