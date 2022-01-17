@@ -81,3 +81,26 @@ Redis 와 Memcached 차이점
 - 하나의 인터프리터(코드를 읽어서 실행시켜주는 프로그램) 이다. 
 - html+css+js로 이루어진 코드를 읽어내어 화면에 뿌려준다. 
 
+
+SPA(Single Page Application)
+- 기존의 웹 페이지와는 달리 페이지 갱신에 필요한 데이터만을 전달받아 페이지를 갱신한다. 
+- 웹 페이지에 필요한 정적 데이터와 페이지 갱신에 필요한 동적 데이터를 하나의 서버에서 처리한다면, 부하가 커지게 되고 처리가 지연됨에 따라 수행 속도가 느려진다! 
+- => Web Server 와 Web Application Server 분리! 
+    - Web Server: 클라이언트의 요청을 처리하는 기능을 담당
+    - WAS(Web Application Server): DB조회나 다양한 로직을 처리하는 기능을 담당
+    - Web Server는 클라이언트가 HTML, CSS와 같은 정적 데이터를 요청하면 앞단에서 빠르게 제공하고, 동적 데이터가 필요하면 WAS에 요청
+
+Nginx
+- NginX(엔진엑스)는 바로 이 Web Server의 구축을 도와주는 소프트웨어. Web Server Software 중 하나이다. 
+- Web Server Software: 웹 어플리케이션을 안정적으로 제공할 수 있도록 도와주는 역할. ex) Nginx, Apache
+
+NginX 기능
+1. 리버스 프록시(Reverse Proxy)
+- 중계 기능을 하는 서버. 
+- 클라이언트가 서버를 호출할 때 직접 서버에 접근하는 것이 아닌 중계 역할을 하는 리버스 프록시 서버를 호출한다. 
+- 이를 통해 실제 서버의 IP를 감춰 보안을 높일 수 있다는 장점이 있다. 
+
+2. 로드밸런싱
+- 서버에 가해지는 부하를 분산해주는 역할을 한다. 
+
+NginX 설치: brew install nginx
