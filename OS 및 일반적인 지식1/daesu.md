@@ -32,7 +32,7 @@ OS가 하는 일
        - ROM에는 POST(Power ON Self-Test)와 부트로더(Boot Loader)가 저장
        - POST : 컴퓨터 전원이 켜지면 가장 먼저 실행되는 프로그램으로 컴퓨터에 이상이 있는 지 체크
        - Boot Loader : 하드디스크에 저장되어 있는 OS 프로그램을 가져와서 RAM에 넘겨주는 역할
-    2) CPU는 초기화를 위해 Boot Loader에 모인 명령들을 읽고, Dist(SSD, HDD)에 있는 프로그램들(OS..)을 RAM(Random Access Memory)에 올린다.
+    2) CPU는 초기화를 위해 Boot Loader에 모인 명령들을 읽고, Disk(SSD, HDD)에 있는 프로그램들(OS..)을 RAM(Random Access Memory)에 올린다.
     3) 프로그램들이 메모리에 올라오면 CPU가 해당 프로그램을 작동시킨다.
  > CPU: 중앙 처리 장치라고 하며 컴퓨터에서 기억, 해석, 연산, 제어라는 4대 주요 기능을 관할하는 장치
 
