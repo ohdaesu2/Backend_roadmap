@@ -100,6 +100,72 @@ Session이란 서버가 가지고 있는 정보이고, Cookie란 세션의 정�
 1-1. 이에 대한 해결책으로, HTTP 문서 내의 쿠키를 읽기 어렵게 만들거나, Session에 유효 시간을 넣는 방법이 있음.
 2. 서버에서 세션 저장소를 필요로 하기 때문에 저장소용량이 늘어나게 됨. 부하가 늘어남.
 
+## 토큰 기반(JWT)
+JWT는 세션/쿠키와 함께 모바일과 웹의 인증을 책임지는 대표주자. JWT는 Json Web Token의 약자로 인증에 필요한 정보들을 암호화시킨 토큰을 뜻함.
+위의 세션/쿠키 방식과 유사하게 사용자는 Access Token(JWT 토큰)을 HTTP 헤더에 실어 서버로 보내게 됨.
+![image](https://user-images.githubusercontent.com/97514510/149780248-41dfac38-4e56-47ee-a58b-59c394c17f8e.png)
+
+jwt.io 사이트에서 암호화된 토큰을 볼 수 있음. 오른쪽의 정보가 왼쪽처럼 암호화됨.
+
+토큰을 만들기 위해 크게 다음과 같은 세가지가 필요함.
+#### 1) Header : 위 3가지 정보를 암호화할 방식(alg), 타입(type) 등이 포함.
+#### 2) Payload : 서버에서 보낼 데이터가 포함. 일반적으로 유저의 고유 ID값, 유효기간이 들어감.
+#### 3) Verify Signature :  Base64 방식으로 인코딩한 Header,payload 그리고 SECRET KEY를 더한 후 서명됨.
+#### 최종적인 결과: Encoded Header + "." + Encoded Payload + "." + Verify Signature
+
+Header와 Payload는 16진수로 변환되기만 할 뿐 따로 암호화되지 않아서 누구나 decoding할 수 있음. 요기에 user의 중요 정보가 포함되면 쉽게 노출될 수 있다.
+
+Verify Signiture는 Secret Key를 알지 못하면 Encoding할 수 없음.
+
+A 사용자가 만약 자신의 Access Token(JWT, 위의 사진에 있는 파일)을 조작하여 B 사용자의 정보를 보고싶다고 하자.
+자신의 Access Token에서 ID 부분을 B 사용자의 ID로 바꿔치기 한 뒤 서버에 요청을 보냈다.
+그러면 Header와 Payload는 그대로 encoding되지만, Verify Signature는 User의 Payload를 기반으로 암호화되었기 때문에 Payload의 정보가 일부 변하면 Encoding할 수 없다.
+
+Payload의 ID를 바꿔치기했기 때문에 해당 부분에서는 나는 B 사용자입니다 라고 주장하지만, 원래는 A 사용자에게 발급되었던 토큰이기 때문에 Verify Signature 부분이 A사용자 정보 기반으로 Decoding된 상태라서 유효하지 않은 토큰으로 분류돼 인증이 실패함.
+
+### 인증 방식
+![image](https://user-images.githubusercontent.com/97514510/149781387-f371f29d-ecf8-4d4f-85db-b67a8725386d.png)
+
+1. 사용자가 로그인을 한다.
+2. 서버에서는 계정정보를 읽어 사용자를 확인 후, 사용자의 고유한 ID값을 부여한 후, 기타 정보와 함께 Payload에 넣음.
+3. JWT 토큰의 유효기간을 설정.
+4. 암호화할 SECRET KEY를 이용해 ACCESS TOKEN을 발급.
+5. 사용자는 Access Token을 받아 저장한 후, 인증이 필요한 요청마다 토큰을 헤더에 실어보냄.
+6. 서버에서는 해당 토큰의 Verify Signature를 SECRET KEY로 Encoding한 후, 조작 여부, 유효기간을 확인.
+7. 검증이 완료된다면, Payload를 디코딩하여 사용자의 ID에 맞는 데이터를 가져옴.  
+ 
+세션/쿠키 방식과 가장 큰 차이점은 세션/쿠키는 세션 저장소에 유저의 정보를 넣는 반면, JWT는 토큰 안에 유저의 정보들이 넣는다는 점. 
+물론 클라이언트(이용자) 입장에서는 HTTP 헤더에 세션ID나 토큰을 실어서 보내준다는 점에서는 동일하나, 서버 측에서는 인증을 위해 암호화(JWT)를 하냐, 별도의 저장소(Session)를 이용하냐는 차이가 발생함.
+
+### JWT 방식의 장점
+1. 간편함. 세션/쿠키는 별도의 저장소의 관리가 필요하지만 JWT는 발급한 후 매번 검증만 하면 되기 때문에 추가 저장소가 필요 없음. 이는 Stateless 한 서버를 만드는 입장에서는 매우 큰 강점. 여기서 Stateless는 어떠한 별도의 저장소도 사용하지 않는, 즉 상태를 저장하지 않는 것을 의미하는데, 이는 서버를 확장하거나 유지,보수하는데 유리.
+2. 확장성이 뛰어남. 토큰 기반으로 하는 다른 인증 시스템에 접근이 가능. 예를 들어 Facebook 로그인, Google 로그인 등은 모두 토큰을 기반으로 인증함. 이에 선택적으로 이름이나 이메일 등을 받을 수 있는 권한도 받을 수 있습니다. (예를 들면, 회원가입 없이 Facebook 아이디로 로그인 등의 방식. 나중에 나옴ㅎㅎ)
+
+### JWT 방식의 단점
+1. 이미 발급된 JWT에 대해서는 돌이킬 수 없음. 세션/쿠키의 경우 만일 쿠키가 악의적으로 이용되는 것을 확인하면, 해당하는 사용자에게 할당된 세션을 지워버리면 됨. 하지만 JWT는 한 번 발급되면 유효기간이 완료될 때 까지는 계속 사용이 가능함(정보가 서버에 있는 것이 아니기 때문에, 요청이 오면 인증해 줄 수 밖에...). 따라서 악의적인 사용자는 유효기간이 지나기 전까지 신나게 정보들을 털어갈 수 있음. 
+1-1. 해결책으로, 기존의 Access Token의 유효기간을 짧게 하고 Refresh Token이라는 새로운 토큰을 발급. 그렇게 되면 Access Token을 탈취당해도 상대적으로 피해를 줄일 수 있음. 이따가 OAuth할 때 이어서 ㅎㅎ
+ 
+2. Payload 정보가 제한적. 위에서 언급했다시피 Payload는 따로 암호화되지 않기 때문에 디코딩하면 누구나 정보를 확인할 수 있음. (세션/쿠키 방식에서는 유저의 정보가 전부 서버의 저장소에 안전하게 보관됩니다) 따라서 유저의 중요한 정보들은 Payload에 넣을 수 없음.
+ 
+3. JWT의 길이. 세션/쿠키 방식에 비해 JWT의 길이는 길기 때문에 인증이 필요한 요청이 많아질 수록 서버의 자원낭비가 발생.
+
+## Refresh Token
+유효기간이 짧은 Token의 경우 그만큼 사용자는 로그인을 자주 해서 새롭게 Token을 발급받아야 하므로 불편함. 그러나 유효기간을 늘리자면, 토큰을 탈취당했을 때 보안에 더 취약해지게 됨.
+
+Refresh Token은 Access Token과 똑같은 형태의 JWT.
+처음에 로그인을 완료했을 때 Access Token과 동시에 발급되는 Refresh Token은 긴 유효기간을 가지면서, Access Token이 만료됐을 때 새로 발급해주는 열쇠(여기서 만료라는 개념은 그냥 유효기간을 지났다~).
+
+** Access Token은 탈취당하면 정보가 유출되는건 동일하나 짧은 유효기간 안에만 사용이 가능하기에 더 안전하다는 의미. 
+
+** Refresh Token의 유효기간이 만료됐다면, 사용자는 새로 로그인해야 함. Refresh Token도 탈취될 가능성이 있기 때문에 적절한 유효기간 설정이 필요(보통 2주, Access는 보통 1시간).
+
+### Access Token + Refresh Token 인증 과정
+![image](https://user-images.githubusercontent.com/97514510/149782652-42a4b62e-b5cb-4893-af8e-fbf79df950ca.png)
+
+
+
+사용 예를 간단히 들어보겠습니다. Refresh Token의 유효기간은 2주, Access Token의 유효기간은 1시간이라 하겠습니다. 사용자는 API 요청을 신나게 하다가 1시간이 지나게 되면, 가지고 있는 Access Token은 만료됩니다. 그러면 Refresh Token의 유효기간 전까지는 Access Token을 새롭게 발급받을 수 있습니다.  
+
 ## OAuth
 ![image](https://user-images.githubusercontent.com/97514510/149778473-1472ea8a-e69b-428e-b6fa-8cd90bb03afe.png)
 
@@ -113,3 +179,20 @@ Session이란 서버가 가지고 있는 정보이고, Cookie란 세션의 정�
 위에서 외부 애플리케이션은 사용자 인증을 위해 Facebook과 Apple 및 Google의 등의 사용자 인증 방식을 사용함.
 이 때, OAuth를 바탕으로 제 3자 서비스(위의 어플)는 외부 서비스(Facebook, Apple, Google)의 특정 자원을 접근 및 사용할 수 있는 권한을 인가받게 됨.
 
+### OAuth 인증 방식
+#### 1. Authorization Code Grant
+![image](https://user-images.githubusercontent.com/97514510/149779558-6165612d-4f69-4c38-ba4e-107c64dbf843.png)
+
+1) Resource Owner : User, 즉 일반 사용자
+
+2) Client : 내가 이용할 어플리케이션 서버(User와 혼동하지 않기!) 
+
+3) Authorization Server : 권한을 관리하는 서버. 
+
+4) Resource Server : OAuth2.0을 관리하는 서버(Google, Facebook, Naver 등) 의 자원을 관리하는 서버. 주의할 점은 내가 이용할 서버의 자원을 관리하는 곳이 아니라 OAuth를 관리하는 외부 서버의 자체 API임.
+
+![image](https://user-images.githubusercontent.com/97514510/149779935-5a58c2a4-4a7b-4491-be3a-6bb5767e8976.png)
+
+#### 2. Implicit Grant
+#### 3. Resource Owner Password Credentials Grant
+#### 4. Client Credentials Grant
