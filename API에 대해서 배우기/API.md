@@ -197,7 +197,7 @@ Refresh Token은 Access Token과 똑같은 형태의 JWT.
 이 때, OAuth를 바탕으로 제 3자 서비스(위의 어플)는 외부 서비스(Facebook, Apple, Google)의 특정 자원을 접근 및 사용할 수 있는 권한을 인가받게 됨.
 
 ### OAuth 인증 방식
-#### 1. Authorization Code Grant
+#### Authorization Code Grant
 ![image](https://user-images.githubusercontent.com/97514510/149779558-6165612d-4f69-4c38-ba4e-107c64dbf843.png)
 
 1) Resource Owner : User, 즉 일반 사용자
@@ -222,7 +222,32 @@ Refresh Token은 Access Token과 똑같은 형태의 JWT.
 10. 그 후 다시 Resource Server에 자원 요청.
 11. 만일 Refresh token도 만료되었을 경우, Resource Owner는 새로운 Authorization Grant를 Client에게 넘겨야합니다. (이는 다시 사용자가 다시 로그인 하라는 .)
 
- 
-#### 2. Implicit Grant
-#### 3. Resource Owner Password Credentials Grant
-#### 4. Client Credentials Grant
+## REST (Representational State Transfer), Restful API
+REST는 프로토콜이나 표준이 아닌 아키텍처 원칙 세트. API 개발자는 REST를 다양한 방식으로 구현할 수 있음.
+
+그냥 API를 구현할 때 누구나 참조 가능한 하나의 구조라고 생각하면 될 듯.
+
+이를 기반으로 구현하면 서로 다른 사람끼리 만든 프로그램도 호환이 잘 되는 일종의 규격.
+
+
+##### API가 RESTful로 간주되려면 다음 기준을 따라야 함.
+1) Uniform (유니폼 인터페이스)
+- Uniform Interface는 URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일. 
+- 한마디로 인터페이스가 통일되어있어야 함.
+
+2) Stateless (무상태성)
+- REST는 무상태성 성격을 가짐. 다시 말해 작업을 위한 상태정보를 따로 저장하고 관리하지 않음. 
+- 세션 정보나 쿠키정보를 별도로 저장하고 관리하지 않기 때문에 API 서버는 들어오는 요청만을 단순히 처리. 
+- 때문에 서비스의 자유도가 높아지고 서버에서 불필요한 정보를 관리하지 않음으로써 구현이 단순하다는 장점.
+
+3) Cacheable (캐시 가능)
+- REST API는 웹에서 사용하는 표준 문서 양식인 HTTP를 그대로 사용하기 때문에, 웹에서 사용하는 기존 인프라를 그대로 활용 가능. 
+- 따라서 HTTP 프로토콜 표준에서 사용하는 Last-Modified태그나 E-Tag 등등을 이용하면 캐싱 구현이 가능.
+
+4) Client - Server 구조
+REST 서버는 API 제공, 클라이언트는 사용자 인증이나 컨텍스트(세션, 로그인 정보)등을 직접 관리하는 구조로 각각의 역할이 확실히 구분되기 때문에 클라이언트와 서버에서 개발해야 할 내용이 명확해지고 서로간 의존성이 줄어들게 됩니다.
+
+### API의 필요성
+‘애플리케이션 분리 및 통합’, ‘다양한 클라이언트의 등장’
+- 최근의 서버 프로그램은 다양한 브라우저와 안드로이폰, 아이폰과 같은 모바일 디바이스에서도 통신을 할 수 있어야 함.
+- 이러한 멀티 플랫폼에 대한 지원을 위해 서비스 자원에 대한 아키텍처를 세우고 이용하는 방법을 모색한 결과, REST에 관심을 가지게 되었다.
