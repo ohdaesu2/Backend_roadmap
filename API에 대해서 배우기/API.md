@@ -162,9 +162,26 @@ Refresh Token은 Access Token과 똑같은 형태의 JWT.
 ### Access Token + Refresh Token 인증 과정
 ![image](https://user-images.githubusercontent.com/97514510/149782652-42a4b62e-b5cb-4893-af8e-fbf79df950ca.png)
 
+1. 사용자가 ID, PW를 통해서 로그인
+2. 서버에서는 사용자가 입력한 정보를 바탕으로, 회원 DB를 탐색. 
+3. DB에 존재하는 사용자임이 확인될 경우 Access Token과 Refresh Token을 발급해줌. 이 때 Refresh Token의 정보를 회원DB에 저장해둔다.
+4. 사용자는 서버로부터 Access Token과 Refresh Token을 받고, 로그인에 성공함.
+5. Refresh Token은 사용자 역시 안전한 곳에 보관해두고, 이후 데이터를 요청할 때 마다 Access Token을 HTTP의 헤더파일에 실어서 서버에 전송.
+6. 서버는 사용자의 Access Token의 유효성을 검증한 후 이에 맞는 데이터를 보내줌.
+7. 만약 시간이 지나서 Access Token이 만료된 경우, 사용자가 만료된 Token을 헤더에 실어서 서버에 보내면 서버는 Token이 만료됨을 확인하고 권한없음을 신호로 보냄.
+8. 권한없음 신호를 받은 사용자는, 처음 로그인했을 때 안전한 곳에 보관해 두었던 Refresh Token을 만료된 Access Token과 함께 다시 서버로 보냄.
+9. 서버는 두 Token을 받아서, Access Token이 조작되지 않았는지 먼저 확인하고, 사용자가 보낸 Refresh Token과 회원DB에 저장된 Refresh Token을 비교함. 두 Refresh Token이 동일하고, 유효기간 이내라면 해당 사용자에게 새로운 Access Token을 발급해줌.
+10. 서버는 새로운 Access Token을 헤더에 실어 요청을 진행함.
 
 
-사용 예를 간단히 들어보겠습니다. Refresh Token의 유효기간은 2주, Access Token의 유효기간은 1시간이라 하겠습니다. 사용자는 API 요청을 신나게 하다가 1시간이 지나게 되면, 가지고 있는 Access Token은 만료됩니다. 그러면 Refresh Token의 유효기간 전까지는 Access Token을 새롭게 발급받을 수 있습니다.  
+### Access Token + Refresh Token의 장점
+- 기존의 Access Token 방식만을 사용할 때보다 안전함.
+- 보안이 중요한 프로젝트에서는 Refresh Token을 함께 사용하기를 권장
+
+### Access Token + Refresh Token의 단점
+- 구현이 복잡함. 검증 프로세스가 길어짐. (프론트, 백엔드 모두 복잡해짐)
+- Access Token이 만료될 때마다 새롭게 발급하는 과정에서 HTTP 요청 횟수가 늘어남. 자원낭비로 귀결
+
 
 ## OAuth
 ![image](https://user-images.githubusercontent.com/97514510/149778473-1472ea8a-e69b-428e-b6fa-8cd90bb03afe.png)
@@ -193,6 +210,19 @@ Refresh Token은 Access Token과 똑같은 형태의 JWT.
 
 ![image](https://user-images.githubusercontent.com/97514510/149779935-5a58c2a4-4a7b-4491-be3a-6bb5767e8976.png)
 
+1. Resource Owner(사용자, User)가 Client(애플리케이션 서버)에 인증 요청을 함.
+2. Client는 Authorization Request를 통해 Resource Owner에게 인증 수단(Facebook이나 Google Login URL)을 보냄.
+3. Resource Owner는 해당 Request를 통해 인증을 진행, 인증 완료 신호로 Authorization Grant를 URL에 실어 Client에 재전송.
+4. Client는 해당 권한 증서(Authorization Grant)를 Authorization Server(Facebook이나 Google의 인증 담당 서버)에 전송.
+5. Authorization Server(Facebook, Google의 인증 담당 서버)는 Authorization Grant(권한 증서)를 확인한 후, User가 맞을 경우 Client(애플리케이션 서버)에게 Access Token, Refresh Token, 그리고 User의 Profile 정보(ID등등)을 발급해줌.
+6. Client는 해당 Access Token을 자신의 DB에 저장하거나 Resource Owner에게 전송
+7. Resource Owner(사용자)가 Resource Server(Facebook 데이터 서버)에 자원이 필요하면, Client는 Access Token을 담아 Resource Server에 요청.
+8. Resource Server는 Access Token이 유효한지 확인 후, Client에게 해당 관련 자원을 전송.
+9. 만일 Access Token이 만료됐거나 위조되었다면, Client(앱 서버)는 Authorization Server(Facebook의 인증담당서버)에 Refresh Token을 보내 Access Token을 재발급 
+10. 그 후 다시 Resource Server에 자원 요청.
+11. 만일 Refresh token도 만료되었을 경우, Resource Owner는 새로운 Authorization Grant를 Client에게 넘겨야합니다. (이는 다시 사용자가 다시 로그인 하라는 .)
+
+ 
 #### 2. Implicit Grant
 #### 3. Resource Owner Password Credentials Grant
 #### 4. Client Credentials Grant
