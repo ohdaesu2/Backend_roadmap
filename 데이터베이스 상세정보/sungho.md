@@ -65,6 +65,7 @@
   1. join fetch
   2. @EntityGraph
   3. the second-level cache 사용하기
+![](https://incheol-jung.gitbook.io/docs/q-and-a/spring/n+1)
 
 
 ## DB 정규화
