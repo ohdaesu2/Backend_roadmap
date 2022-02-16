@@ -30,7 +30,8 @@ Testing 활동: SW를 실행하면서 Test를 수행하는 동적 Testing, 문�
   - 지속적인 통합, 지속적인 서비스 제공, 지속적인 배포 -> 기본 개념
   - 새로운 코드 통합으로 인해 개발 및 운영팀에 발생하는 문제(Integration Hell)를 해결하기 위한 솔루션
 
-https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/ci-cd-flow-desktop_edited_0.png?itok=TzgJwj6p![image]
+![image](https://user-images.githubusercontent.com/97514510/154279480-ee4d60f7-6347-40fe-8c03-5892bc80cfe8.png)
+
 
   - 지속적인 제공(CI)이란 개발자들이 애플리케이션에 적용한 변경 사항이 버그 테스트를 거쳐 Repository(Github 등)에 자동으로 업로드되는것을 뜻함.
   - 운영팀은 이 Repository에서 애플리케이션을 가장 최신의 상태로 실시간으로 배포 가능
@@ -40,7 +41,7 @@ https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/ci-cd-flow
 
 * CI
 
-https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGXdIT%2FbtqI9GkH3wP%2F5Qx2zLKYRxsYWLSoS6KH3K%2Fimg.png![image](https://user-images.githubusercontent.com/97514510/154276266-7bbc945d-2114-4bba-bc83-cae68645a049.png)
+![image](https://user-images.githubusercontent.com/97514510/154276266-7bbc945d-2114-4bba-bc83-cae68645a049.png)
 
   - 어플리케이션의 새로운 코드 변경 사항이 정기적으로 빌드 및 테스트되어 공유 Repository에 통합되는 것을 의미(가능하다면 하루 여러번까지).
   - CI를 적용하면 각자의 개발자가 자신이 구현해야 할 기능을 구현한 뒤, 수정한 코드를 Branch에 병합하기만 하면 자동으로 Build와 Test가 진행된다.
@@ -51,7 +52,7 @@ https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog
 
 * CD
 
-https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FeeSLmu%2FbtqI9pXqCN8%2FiIopSPh3KSK1SwhRjkWPf1%2Fimg.png![image](https://user-images.githubusercontent.com/97514510/154278636-6301c9fe-4a0f-4a4b-bcb7-26cac9124417.png)
+![image](https://user-images.githubusercontent.com/97514510/154278636-6301c9fe-4a0f-4a4b-bcb7-26cac9124417.png)
 
   - 지속적인 배포(CD)란 개발자의 변경 사항을 Repository에서 고객이 사용 가능한 제품 환경까지 자동으로 Release(적용)하는 것을 의미함.
   - 이제 지속적 통합(CI)를 거친 코드에 대해 우리는 신뢰할 수 있고 바로 배포할 수 있음.
