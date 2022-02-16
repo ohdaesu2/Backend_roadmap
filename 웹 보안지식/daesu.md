@@ -145,7 +145,8 @@ Click Jacking(클릭재킹)
 CORS(Cross-Origin Resource Sharing)
 - 추가 HTTP Header를 사용하여, 한 출처에서 실행 중인 웹 애플리케이션이 다른 출처의 선택한 자원에 접근할 수 있는 권한을 부여
   Origin(출처)
-  ![](../../../../var/folders/2t/19jmqkvn5c9dpyjys7t98n9r0000gn/T/TemporaryItems/NSIRD_screencaptureui_ACdcYD/스크린샷 2022-02-09 오후 9.49.45.png)
+ ![스크린샷 2022-02-16 오후 3 36 50](https://user-images.githubusercontent.com/90598930/154209777-382c6980-1c1d-4ba8-9e3c-ded50f3997c8.png)
+
 - 위 그림에 있는 Protocal, Host 등등 + 포트 번호(:80, :43)까지 합친 것을 Origin 이라 한다.
 
 SOP(Same-Origin Policy)
