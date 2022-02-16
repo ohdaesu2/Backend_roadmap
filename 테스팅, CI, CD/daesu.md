@@ -1,1 +1,60 @@
-hello1
+Testing
+과거의 Testing: 응용프로그램이나 System의 정상 작동여부 확인
+현재의 Testing: 사용자의 기대 수준, 요구 사항에 맞게 구현되고 동작하는지 검증, 결함 발견
+Testing 활동: SW를 실행하면서 Test를 수행하는 동적 Testing, 문서의 Review, 정적 분석까지 모두 포함
+
+* 단위 테스트 (Unit Test):
+
+  - 응용 프로그램에서 실행 가능한 가장 작은 SW를 실행, 예상대로 동작하는지 확인
+  - Test 대상 단위는 엄격하게 정해져 있진 않으나 Class 또는 Method 수준으로 수행
+  - 최대한 작게 설정하여 단위 테스트를 간단하고 디버깅하기 쉽게 해야 함.
+  - 내부 구조나 구현 방법을 고려하여 개발자 관점에서 Test하기 때문에 내부 코드 관련 지식을 반드시 알아야 하는 White Box Test. 
+
+* 통합 테스트 (Integration Test):
+
+  - 단위 테스트보다 더 큰 동작을 달성하기 위해 여러 module을 모아 이들이 의도대로 협력하는지 확인
+  - 단위 테스트와 달리 개발자가 변경할 수 없는 부분(ex. 외부 라이브러리)까지 묶어서 검증할 때 사용
+  - 전체 코드 + 환경 이 제대로 작동하는지 확인할 수 있음
+  - 단위 Test에서는 발견 어려운 버그를 찾을 수 있음(Single-Core CPU에서는 잘 실행되나 Quad-Core CPU에서는 잘 실행되지 않는다던가 같은 버그).
+  - 단위 테스트와 비교해서 버그가 발생한 곳을 찾기가 어려움, 유지 보수가 상대적으로 힘듦
+
+* 기능 테스트 (Functional Testing):
+
+  - Input을 주고, 그에 해당하여 출력된 output을 조사함.
+  - Program의 내부 구조에는 거의 관심 없고, 해당 시스템이 무엇을 하는지 기술하는 Black Box Testing.
+
+
+* CI/CD: Continuous Integration / Continuous Delivery, Deployment
+
+  - CI/CD란 애플리케이션의 개발 단계를 자동화하여 애플리케이션을 보다 짧은 주기로 고객에게 제공하는 방법을 말함
+  - 지속적인 통합, 지속적인 서비스 제공, 지속적인 배포 -> 기본 개념
+  - 새로운 코드 통합으로 인해 개발 및 운영팀에 발생하는 문제(Integration Hell)를 해결하기 위한 솔루션
+
+https://www.redhat.com/cms/managed-files/styles/wysiwyg_full_width/s3/ci-cd-flow-desktop_edited_0.png?itok=TzgJwj6p![image]
+
+  - 지속적인 제공(CI)이란 개발자들이 애플리케이션에 적용한 변경 사항이 버그 테스트를 거쳐 Repository(Github 등)에 자동으로 업로드되는것을 뜻함.
+  - 운영팀은 이 Repository에서 애플리케이션을 가장 최신의 상태로 실시간으로 배포 가능
+  - 개발팀과 운영팀 사이의 커뮤니케이션 부족 문제를 해결해줌.
+
+
+
+* CI
+
+https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbGXdIT%2FbtqI9GkH3wP%2F5Qx2zLKYRxsYWLSoS6KH3K%2Fimg.png![image](https://user-images.githubusercontent.com/97514510/154276266-7bbc945d-2114-4bba-bc83-cae68645a049.png)
+
+  - 어플리케이션의 새로운 코드 변경 사항이 정기적으로 빌드 및 테스트되어 공유 Repository에 통합되는 것을 의미(가능하다면 하루 여러번까지).
+  - CI를 적용하면 각자의 개발자가 자신이 구현해야 할 기능을 구현한 뒤, 수정한 코드를 Branch에 병합하기만 하면 자동으로 Build와 Test가 진행된다.
+  - 이 결과를 통해 어떤 부분에서 문제가 있는지 배포 전에 빠르게 확인할 수 있음.
+  - 자동화 이전에는 배포를 완성한 후에야 버그를 확인할 수 있었음. 
+  - 이를 위해서는 개발자들이 동일한 형상관리 툴(Git 등)을 사용해야 함.
+
+
+* CD
+
+https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FeeSLmu%2FbtqI9pXqCN8%2FiIopSPh3KSK1SwhRjkWPf1%2Fimg.png![image](https://user-images.githubusercontent.com/97514510/154278636-6301c9fe-4a0f-4a4b-bcb7-26cac9124417.png)
+
+  - 지속적인 배포(CD)란 개발자의 변경 사항을 Repository에서 고객이 사용 가능한 제품 환경까지 자동으로 Release(적용)하는 것을 의미함.
+  - 이제 지속적 통합(CI)를 거친 코드에 대해 우리는 신뢰할 수 있고 바로 배포할 수 있음.
+  - CD는 지속적 배포로, 소프트웨어가 항상 신뢰 가능한 수준에서 배포될 수 있도록 관리하자는 개념.
+  - CI를 통해 새로운 소스코드가 성공적으로 빌드와 테스트까지 끝마쳤다면, 이를 Github와 같은 저장소 뿐 아니라 사용자가 사용할 수 있는 배포환경까지 제품(Production)수준으로 Release함.
+  - 수동 프로세스를 진행하면 운영팀의 프로세스 과부하로 애플리케이션 제공 속도를 저해하는데, 이 문제를 해결함.
